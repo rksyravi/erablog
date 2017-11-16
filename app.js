@@ -1,32 +1,33 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/era', { useMongoClient: true });
+const db = mongoose.connection;
+db.once('open', function() {
+    console.log('connected to MongoDB');
+});
+
+db.on('error', function(err) {
+    console.log(err);
+});
 
 const app = express();
+
+const Article = require('./models/article');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.get('/', function(req, res) {
-    const blogs = [
-        {
-            id: 1,
-            title: 'blog one',
-            author: 'John Doe'
-        },
-        {
-            id: 2,
-            title: 'blog two',
-            author: 'John Doe'
-        },
-        {
-            id: 3,
-            title: 'blog three',
-            author: 'John Doe'
+    Article.find({}, function(err, blogs) {
+        if(err) {
+            console.log(err);
+        }else {
+            res.render('index',{
+                title:'BlogEra',
+                blogs:blogs
+            });
         }
-    ];
-    res.render('index',{
-        title:'BlogEra',
-        blogs:blogs
     });
 });
 
