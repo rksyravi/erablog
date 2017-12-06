@@ -1,6 +1,6 @@
 extends layout
 block content
-    h1 #{title}
-    ul
+    ul.list-group
         each blog, i in blogs
-            li= blog.title
+            li.list-group-item
+                a(href="/article/"+blog._id)= blog.title

@@ -2,8 +2,40 @@ doctype html
 html
     head
         title BlogEra
+        link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='/css/style.css')
     body
-        block content
-        br
-        hr
-        p copyright &copy; 2017
+        nav.navbar.navbar-inverse.navbar-fixed-top
+            .container
+                .navbar-header
+                    button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar", aria-controls="navbar", aria-expanded="false", aria-label="Toggle navigation")
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='/') BlogEra
+                #navbar.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href='/') Home
+                        li
+                            a(href='/add-articles') Add Articles
+                        li
+                            a(href='/about') About Us
+        block head
+            div.bs-docs-header#content 
+                div.container
+                    h1 #{title}
+        main(role="main").container
+            .container
+                != messages('message', locals)
+                block content
+                br
+                hr
+        block footer
+                footer.bs-docs-footer
+                    div.container
+                        p copyright &copy; 2017
+        script(src='/bower_components/jquery/dist/jquery.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src='/js/main.js')
