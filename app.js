@@ -20,7 +20,6 @@ const app = express();
 
 // middleware
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expressValidator(middlewareOptions));
 // parse application/json
 app.use(bodyParser.json());
 
@@ -37,7 +36,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-/* app.use(expressValidator({
+app.use(expressValidator({
     errorFormatter: function(param, msg, value){
         const namespace = param.split('.')
         , root = namespace.shift()
@@ -52,7 +51,7 @@ app.use(function (req, res, next) {
             value : value
         };
     }
-})); */
+}));
 
 app.get('/', function(req, res) {
     Article.find({}, function(err, blogs) {
