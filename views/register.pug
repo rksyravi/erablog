@@ -1,0 +1,24 @@
+extends layout
+block head
+    div.bs-docs-header#content 
+        div.container
+            h1 #{title}
+block content
+    form(method='POST', action='/users/register')
+        #form-group.col-md-6
+            label.title Name:
+            input.form-control(name='name', type='text')
+        #form-group.col-md-6
+            label.email Email:
+            input.form-control(name='email', type='text')
+        #form-group.col-md-6
+            label.username Username:
+            input.form-control(name='username', type='text')
+        #form-group.col-md-6
+            label.password Password:
+            input.form-control(name='password', type='password')
+        #form-group.col-md-6
+            label.password2 Confirm Password:
+            input.form-control(name='password2', type='password')
+        div.col-md-12
+            input.btn.btn-primary(type="submit", value='Submit')

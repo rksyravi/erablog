@@ -1,0 +1,16 @@
+extends layout
+block head
+    div.bs-docs-header#content 
+        div.container
+            h1 #{title}
+block content
+    form(method='POST', action='/users/login')
+        #form-group.col-md-6
+            
+            label.username Username:
+            input.form-control(name='username', type='text')
+        #form-group.col-md-6
+            label.password Password:
+            input.form-control(name='password', type='password')
+        div.col-md-12
+            input.btn.btn-primary(type="submit", value='Submit')

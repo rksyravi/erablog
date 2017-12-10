@@ -19,9 +19,14 @@ html
                         li.active
                             a(href='/') Home
                         li
-                            a(href='/add-articles') Add Articles
+                            a(href='/articles/add') Add Articles
                         li
                             a(href='/about') About Us
+                    ul.nav.navbar-nav.navbar-right        
+                        li
+                            a(href='/users/register') Register
+                        li
+                            a(href='/users/login') Login
         block head
             div.bs-docs-header#content 
                 div.container
@@ -29,6 +34,10 @@ html
         main(role="main").container
             .container
                 != messages('message', locals)
+                if errors
+                    div(class='alert alert-danger')
+                        each error, i in errors
+                            li #{error.msg}
                 block content
                 br
                 hr

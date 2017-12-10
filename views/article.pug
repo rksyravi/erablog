@@ -1,6 +1,6 @@
 extends layout
 block content
-    a.btn.btn-default(href='/article/edit/'+article._id) Edit
+    a.btn.btn-default(href='/articles/edit/'+article._id) Edit
     a.btn.btn-danger.delete-article(href='#' data-id=article._id) Delete
     h1= article.title
     h5 Written by #{article.author}

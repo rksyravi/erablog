@@ -1,6 +1,6 @@
 extends layout
 block content
-    form(method='POST', action='/article/edit/'+article._id)
+    form(method='POST', action='/articles/edit/'+article._id)
         #form-group.col-md-6
             label.title Title:
             input.form-control(name='title', type='text' value=article.title)
