@@ -22,11 +22,15 @@ html
                             a(href='/articles/add') Add Articles
                         li
                             a(href='/about') About Us
-                    ul.nav.navbar-nav.navbar-right        
-                        li
-                            a(href='/users/register') Register
-                        li
-                            a(href='/users/login') Login
+                    ul.nav.navbar-nav.navbar-right
+                        if user
+                            li
+                                a(href='/users/logout') Logout
+                        else    
+                            li
+                                a(href='/users/register') Register
+                            li
+                                a(href='/users/login') Login
         block head
             div.bs-docs-header#content 
                 div.container
